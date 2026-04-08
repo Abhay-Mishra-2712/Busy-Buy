@@ -15,11 +15,12 @@ import { useDispatch} from "react-redux";
 import { setAuthUser, setAuthInitialized } from "./redux/reducers/authReducer";
 
 function App() {
-  const auth = getAuth();
+ 
   const dispatch = useDispatch();
 
   // Authenticate the user if he is already logged in and set the user in the auth context.
   useEffect(() => {
+     const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         dispatch(

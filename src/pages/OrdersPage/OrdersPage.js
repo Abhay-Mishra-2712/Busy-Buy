@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, {  useEffect } from "react";
 import Loader from "../../components/UI/Loader/Loader";
 import styles from "./OrdersPage.module.css";
 import OrderTable from "../../components/OrderTable/OrderTable";

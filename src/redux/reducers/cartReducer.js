@@ -1,13 +1,6 @@
 // Implement your code for cart reducer
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import {
-  doc,
-  setDoc,
-  getDoc,
-  collection,
-  getDocs,
-  addDoc,
-} from "firebase/firestore";
+import { doc, setDoc, getDoc } from "firebase/firestore";
 import { db } from "../../config/firebase";
 import {
   getUserCartProducts,

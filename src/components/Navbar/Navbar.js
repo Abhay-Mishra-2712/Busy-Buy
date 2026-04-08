@@ -13,7 +13,6 @@ import {
 } from "../../redux/reducers/authReducer";
 
 const Navbar = () => {
-  const [click, setClick] = useState(false);
   const dispatch = useDispatch();
   const isAuthenticated = useSelector(selectIsAuthenticated);
 
@@ -37,10 +36,7 @@ const Navbar = () => {
         <NavLink to="/" className="navbar-logo">
           Busy Buy
         </NavLink>
-        <ul
-          className={click ? "nav-menu active" : "nav-menu"}
-          onClick={scrollTop}
-        >
+        <ul className="nav-menu" onClick={scrollTop}>
           <li className="nav-item active">
             <NavLink
               activeclassname="active-links"
@@ -122,6 +118,7 @@ const Navbar = () => {
                     src={SignIn}
                     alt="SignIn"
                     onClick={scrollTop}
+                    
                   />
                 </span>
                 SignIn

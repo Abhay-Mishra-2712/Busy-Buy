@@ -13,11 +13,11 @@ import {
   selectIsAuthenticated,
   selectUser,
 } from "../../redux/reducers/authReducer";
-import { useNavigate } from "react-router-dom";
+
 
 const OrdersPage = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+
   const user = useSelector(selectUser);
   const isAuthenticated = useSelector(selectIsAuthenticated);
   const authInitialized = useSelector(selectAuthInitialized);

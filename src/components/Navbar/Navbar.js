@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+
 import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 import HomeIcon from "../../assets/home.png";
@@ -118,7 +118,7 @@ const Navbar = () => {
                     src={SignIn}
                     alt="SignIn"
                     onClick={scrollTop}
-                    
+
                   />
                 </span>
                 SignIn

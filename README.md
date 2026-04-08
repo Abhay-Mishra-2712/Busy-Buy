@@ -14,6 +14,12 @@
 
 ---
 
+## 🔗 Live Demo
+
+👉 [Click here to view the app] (https://busy-buy-self.vercel.app//)
+
+---
+
 ## 📸 Screenshots
 
 | ![Home](https://github.com/Abhay-Mishra-2712/Busy-Buy/blob/main/public/screenshots/Home.png) |

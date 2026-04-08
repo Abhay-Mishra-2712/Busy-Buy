@@ -1,9 +1,10 @@
 <div align="center">
-# 🛒 BusyBuy
-### A full-featured e-commerce web application built with React, Redux Toolkit & Firebase
 
-[![Live Demo]
-(https://img.shields.io/badge/Live%20Demo-Visit%20Site-brightgreen?style=for-the-badge&logo=vercel)](https://busy-buy-self.vercel.app/)
+<h1>🛒 BusyBuy</h1>
+
+<h3>A full-featured e-commerce web application built with React, Redux Toolkit & Firebase</h3>
+
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Visit%20Site-brightgreen?style=for-the-badge&logo=vercel)](https://busy-buy-self.vercel.app/)
 [![GitHub](https://img.shields.io/badge/GitHub-Repository-black?style=for-the-badge&logo=github)](https://github.com/Abhay-Mishra-2712/Busy-Buy)
 [![React](https://img.shields.io/badge/React-18.2.0-61DAFB?style=for-the-badge&logo=react)](https://reactjs.org)
 [![Redux](https://img.shields.io/badge/Redux%20Toolkit-1.9.3-764ABC?style=for-the-badge&logo=redux)](https://redux-toolkit.js.org)

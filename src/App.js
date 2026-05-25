@@ -49,7 +49,7 @@ function App() {
         pauseOnHover
       />
 
-      <header>
+      <header >
         <Navbar />
       </header>
       <Routes>

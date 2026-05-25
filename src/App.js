@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "./App.css";
-import { Route, Routes} from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
@@ -11,16 +11,15 @@ import Navbar from "./components/Navbar/Navbar";
 import CartPage from "./pages/CartPage/CartPage";
 import OrdersPage from "./pages/OrdersPage/OrdersPage";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import { setAuthUser, setAuthInitialized } from "./redux/reducers/authReducer";
 
 function App() {
- 
   const dispatch = useDispatch();
 
   // Authenticate the user if he is already logged in and set the user in the auth context.
   useEffect(() => {
-     const auth = getAuth();
+    const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         dispatch(
@@ -49,7 +48,7 @@ function App() {
         pauseOnHover
       />
 
-      <header >
+      <header>
         <Navbar />
       </header>
       <Routes>

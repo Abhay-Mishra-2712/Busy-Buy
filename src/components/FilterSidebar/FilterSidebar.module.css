@@ -1,26 +1,22 @@
-.form {
-  margin: auto;
-  width: 25%;
+.filterContainer {
+  position: sticky;
+  top: 100px;
+  width: 14rem;
+  flex-shrink: 0;
+  padding: 1rem;
+  text-align: center;
+  background: #f0f0fc;
+  border-radius: 10px;
+  align-self: flex-start;
 }
 
 .priceRange {
-  transform: scale(1);
   cursor: pointer;
   height: 6px;
   width: 90%;
   background-color: rgb(112, 100, 229);
   border-radius: 4px;
-}
-
-.filterContainer {
-  position: fixed;
-  left: 0;
-  top: 30%;
-  width: 14rem;
-  padding: 1rem;
-  text-align: center;
-  background: #f0f0fc;
-  border-radius: 10px;
+  margin: 0.5rem 0;
 }
 
 .categoryContainer {
@@ -29,6 +25,12 @@
   align-items: flex-start;
   justify-content: center;
   gap: 0.5rem;
+  text-align: left;
+}
+
+.inputContainer {
+  display: flex;
+  align-items: center;
 }
 
 [type="checkbox"] {
@@ -36,10 +38,38 @@
   height: 1rem;
   width: 1rem;
   margin-right: 0.5rem;
+  cursor: pointer;
 }
 
-div h2 {
-  font-size: 1.25em;
-  color: #224957;
-  font-weight: bold;
+/* Tablet — sidebar goes to top horizontal bar */
+@media screen and (max-width: 768px) {
+  .filterContainer {
+    position: static;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+  }
+
+  .priceRange {
+    width: 100%;
+  }
+
+  .categoryContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    gap: 0.5rem;
+  }
+}
+
+/* Mobile */
+@media screen and (max-width: 480px) {
+  .categoryContainer {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.4rem;
+  }
 }

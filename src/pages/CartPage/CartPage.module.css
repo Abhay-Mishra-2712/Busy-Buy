@@ -1,11 +1,17 @@
 .cartPageContainer {
-  margin: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 1.5rem;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .totalPrice {
-  position: fixed;
-  left: 0.5rem;
-  top: 30%;
+  position: sticky;
+  top: 100px;
   background: #f1f1f1;
   padding: 1.5rem;
   display: flex;
@@ -13,24 +19,29 @@
   align-items: center;
   justify-content: flex-start;
   gap: 1rem;
-  margin-right: 2rem;
   border-radius: 10px;
+  min-width: 180px;
+  flex-shrink: 0;
 }
 
 .totalPrice p {
-  font-size: 1.15em;
+  font-size: 1.1em;
   color: #224957;
   font-weight: bold;
+  margin: 0;
+  text-align: center;
 }
 
 .purchaseBtn {
   color: #fff;
   border: 1px solid #7064e5;
   border-radius: 6px;
-  font-size: 20px;
+  font-size: 1.1rem;
   background: #7064e5;
   transition: all 0.3s ease-in-out;
-  margin: auto;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  width: 100%;
 }
 
 .purchaseBtn:hover {
@@ -39,9 +50,41 @@
   background-color: transparent;
 }
 
+/* Tablet */
 @media screen and (max-width: 768px) {
+  .cartPageContainer {
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
   .totalPrice {
-    position: inherit;
-    margin: 0.5rem;
+    position: static;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+  }
+
+  .purchaseBtn {
+    width: auto;
+    padding: 0.6rem 2rem;
+  }
+}
+
+/* Mobile */
+@media screen and (max-width: 480px) {
+  .cartPageContainer {
+    padding: 0.75rem;
+  }
+
+  .totalPrice {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .purchaseBtn {
+    width: 100%;
   }
 }

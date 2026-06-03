@@ -1,4 +1,3 @@
-// Implement your code for product reducer
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../config/firebase";
@@ -33,17 +32,24 @@ const productsSlice = createSlice({
       const anyCategory = Object.values(categories).some(Boolean);
 
       state.filteredProducts = state.products.filter((product) => {
-        const matchesQuery = product.title
+        // ✅ Guard against undefined title and category
+        const title = product.title || "";
+        const category = product.category || "";
+        const price = product.price || 0;
+
+        const matchesQuery = title
           .toLowerCase()
-          .includes(query.toLowerCase());
-        const matchesPrice = product.price <= Number(priceRange);
+          .includes((query || "").toLowerCase());
+
+        const matchesPrice = price <= Number(priceRange);
+
         const matchesCategory = anyCategory
-          ? (categories.mensFashion && product.category === "men's clothing") ||
-            (categories.womensFashion &&
-              product.category === "women's clothing") ||
-            (categories.jewelery && product.category === "jewelery") ||
-            (categories.electronics && product.category === "electronics")
+          ? (categories.mensFashion && category === "men's clothing") ||
+            (categories.womensFashion && category === "women's clothing") ||
+            (categories.jewelery && category === "jewelery") ||
+            (categories.electronics && category === "electronics")
           : true;
+
         return matchesQuery && matchesPrice && matchesCategory;
       });
     },

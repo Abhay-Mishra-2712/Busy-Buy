@@ -12,7 +12,7 @@ import {
 } from "../../redux/reducers/productsReducer";
 
 function HomePage() {
-  const [query, setQuery] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
   const [priceRange, setPriceRange] = useState(75000);
   const [categories, setCategories] = useState({
     mensFashion: false,
@@ -32,32 +32,37 @@ function HomePage() {
   // Rerender the products if the search or filter parameters change
 
   useEffect(() => {
-    dispatch(filterProducts({ query, priceRange, categories }));
-  }, [query, priceRange, categories, dispatch]);
+    dispatch(filterProducts({ searchTerm, priceRange, categories }));
+  }, [searchTerm, priceRange, categories, dispatch]);
 
   // Display loader while products are fetching using the Loader Component
   if (loading) return <Loader />;
 
   return (
-    <div className={styles.homePageContainer}>
-      <FilterSidebar
-        setPriceRange={setPriceRange}
-        setCategories={setCategories}
-        priceRange={priceRange}
-      />
+  <div className={styles.homePageContainer}>
+    <FilterSidebar
+      setCategories={setCategories}
+      setPriceRange={setPriceRange}
+      priceRange={priceRange}
+      categories={categories}
+    />
+    {/* ← add this wrapper div */}
+    <div className={styles.mainContent}>
       <form className={styles.form}>
         <input
           type="search"
           placeholder="Search By Name"
           className={styles.searchInput}
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
         />
       </form>
-
-      <ProductList products={filteredProducts} onCart={false} />
+      {filteredProducts.length > 0 && (
+        <ProductList products={filteredProducts} onCart={false} />
+      )}
     </div>
-  );
+  </div>
+);
 }
 
 export default HomePage;

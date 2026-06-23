@@ -1,4 +1,4 @@
-
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 import HomeIcon from "../../assets/home.png";
@@ -15,92 +15,84 @@ import {
 const Navbar = () => {
   const dispatch = useDispatch();
   const isAuthenticated = useSelector(selectIsAuthenticated);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const scrollTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const handleNavClick = () => {
+    setMenuOpen(false);
+    scrollTop();
+  };
+
   const onLogoutHandler = () => {
     dispatch(logoutUser());
+    setMenuOpen(false);
   };
 
   return (
-    <nav
-      className="navbar"
-      style={{
-        justifyContent: "space-evenly",
-        boxShadow: "rgb(17 17 26 / 5%) 0px 15px 20px",
-      }}
-    >
+    <nav className="navbar">
       <div className="navbar-container">
-        <NavLink to="/" className="navbar-logo">
+        <NavLink to="/" className="navbar-logo" onClick={handleNavClick}>
           Busy Buy
         </NavLink>
-        <ul className="nav-menu" onClick={scrollTop}>
-          <li className="nav-item active">
-            <NavLink
-              activeclassname="active-links"
-              to="/"
-              className="nav-links"
-              exact="true"
-            >
+
+        {/* Hamburger button — only visible on mobile */}
+        <button
+          className="menu-icon"
+          onClick={() => setMenuOpen((prev) => !prev)}
+          aria-label="Toggle menu"
+        >
+          {menuOpen ? "✕" : "☰"}
+        </button>
+
+        <ul className={`nav-menu ${menuOpen ? "active" : ""}`}>
+          <li className="nav-item">
+            <NavLink to="/" className="nav-links" onClick={handleNavClick}>
               <span>
-                <img
-                  className="icon_styles"
-                  src={HomeIcon}
-                  alt="Home"
-                  onClick={scrollTop}
-                />
-              </span>{" "}
+                <img className="icon_styles" src={HomeIcon} alt="Home" />
+              </span>
               Home
             </NavLink>
           </li>
+
           {isAuthenticated && (
             <>
-              <li className="nav-item active">
+              <li className="nav-item">
                 <NavLink
-                  activeclassname="active-links"
                   to="/myorders"
                   className="nav-links"
+                  onClick={handleNavClick}
                 >
                   <span>
                     <img
                       className="icon_styles"
                       src={OrdersIcon}
                       alt="Orders"
-                      onClick={scrollTop}
                     />
-                  </span>{" "}
-                  My orders
+                  </span>
+                  My Orders
                 </NavLink>
               </li>
-              <li className="nav-item active">
+              <li className="nav-item">
                 <NavLink
-                  activeclassname="active-links"
                   to="/cart"
                   className="nav-links"
+                  onClick={handleNavClick}
                 >
                   <span>
-                    <img
-                      className="icon_styles"
-                      src={Cart}
-                      alt="Cart"
-                      onClick={scrollTop}
-                    />
-                  </span>{" "}
+                    <img className="icon_styles" src={Cart} alt="Cart" />
+                  </span>
                   Cart
                 </NavLink>
               </li>
             </>
           )}
-          <li className="nav-item active">
+
+          <li className="nav-item">
             {isAuthenticated ? (
-              <NavLink
-                to="/"
-                onClick={onLogoutHandler}
-                activeclassname="active-links"
-                className="nav-links"
-              >
+              <NavLink to="/" onClick={onLogoutHandler} className="nav-links">
                 <span>
                   <img className="icon_styles" src={Logout} alt="Logout" />
                 </span>
@@ -108,18 +100,12 @@ const Navbar = () => {
               </NavLink>
             ) : (
               <NavLink
-                activeclassname="active-links"
                 to="/signin"
                 className="nav-links"
+                onClick={handleNavClick}
               >
                 <span>
-                  <img
-                    className="icon_styles"
-                    src={SignIn}
-                    alt="SignIn"
-                    onClick={scrollTop}
-
-                  />
+                  <img className="icon_styles" src={SignIn} alt="SignIn" />
                 </span>
                 SignIn
               </NavLink>

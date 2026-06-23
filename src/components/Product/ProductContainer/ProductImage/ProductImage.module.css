@@ -1,30 +1,57 @@
 .imageContainer {
   width: 100%;
+  height: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem 0;
+  padding: 1rem;
+  overflow: hidden;
+  background: #f8f8fc;
+  border-radius: 8px;
 }
 
-.imageContainer img {
-  width: 100%;
-  max-width: 180px;
-  height: 180px;
+.productImg {
+  max-width: 100%;
+  max-height: 180px;
+  width: auto;
+  height: auto;
   object-fit: contain;
 }
 
-/* Tablet */
+.fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: #9b99c4;
+  font-size: 3rem;
+  background: #f0f0fc;
+  border-radius: 8px;
+}
+
+.fallback span {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #7064e5;
+}
+
 @media screen and (max-width: 768px) {
-  .imageContainer img {
-    max-width: 150px;
-    height: 150px;
+  .imageContainer {
+    height: 160px;
+  }
+  .productImg {
+    max-height: 140px;
   }
 }
 
-/* Mobile */
 @media screen and (max-width: 480px) {
-  .imageContainer img {
-    max-width: 130px;
+  .imageContainer {
     height: 130px;
+  }
+  .productImg {
+    max-height: 110px;
   }
 }

@@ -3,28 +3,26 @@
   flex-direction: column;
   width: 100%;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: flex-end;
   gap: 0.5rem;
+  flex: 1;
 }
 
 .productName {
   font-family: "Inter", sans-serif;
   font-weight: 500;
   color: #224957;
-  padding: 4px 0;
-  font-size: 1rem;
   width: 100%;
 }
 
 .productName p {
   margin: 0;
+  font-size: 0.95rem;
   line-height: 1.4;
 }
 
 .productOptions {
   width: 100%;
-  padding: 4px 0;
-  font-size: 1.2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -32,6 +30,7 @@
 }
 
 .productOptions p {
+  font-size: 1.25rem;
   font-weight: 700;
   color: #224957;
   margin: 0;
@@ -41,14 +40,16 @@
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  gap: 0.5rem;
-  min-width: 80px;
+  gap: 0.4rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #224957;
 }
 
 .quantityContainer img {
   transition: all 0.1s ease-in-out;
-  width: 28px;
-  height: 28px;
+  width: 26px;
+  height: 26px;
 }
 
 .quantityContainer img:hover {
@@ -60,51 +61,70 @@
   color: #fff;
   padding: 0.65rem 0;
   border: 1px solid #7064e5;
-  border-radius: 6px;
-  font-size: 1rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
   background: #7064e5;
   transition: all 0.3s ease-in-out;
   width: 100%;
   cursor: pointer;
+  margin-top: 0.25rem;
 }
 
 .removeBtn {
   color: #fff;
   padding: 0.65rem 0;
-  border: 1px solid red;
-  border-radius: 6px;
-  font-size: 1rem;
-  background: rgb(241, 68, 68);
+  border: 1px solid #e53e3e;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  background: #e53e3e;
   transition: all 0.3s ease-in-out;
   width: 100%;
   cursor: pointer;
+  margin-top: 0.25rem;
 }
 
-.addBtn:hover {
+.addBtn:hover:not(:disabled) {
   color: #7064e5;
   background-color: transparent;
-  border: 1px solid #7064e5;
 }
 
-.removeBtn:hover {
-  color: rgb(241, 68, 68);
+.removeBtn:hover:not(:disabled) {
+  color: #e53e3e;
   background-color: transparent;
-  border: 1px solid rgb(241, 68, 68);
 }
 
-/* Mobile */
-@media screen and (max-width: 480px) {
-  .productName {
-    font-size: 0.9rem;
-  }
+.addBtn:disabled,
+.removeBtn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
 
-  .productOptions {
-    font-size: 1rem;
+@media screen and (max-width: 768px) {
+  .productOptions p {
+    font-size: 1.1rem;
   }
 
   .addBtn,
   .removeBtn {
     font-size: 0.9rem;
     padding: 0.55rem 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .productName p {
+    font-size: 0.85rem;
+  }
+
+  .productOptions p {
+    font-size: 1rem;
+  }
+
+  .addBtn,
+  .removeBtn {
+    font-size: 0.85rem;
+    padding: 0.5rem 0;
   }
 }

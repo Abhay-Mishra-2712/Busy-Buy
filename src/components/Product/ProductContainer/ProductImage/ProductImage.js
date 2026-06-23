@@ -1,16 +1,18 @@
 import React from "react";
 import styles from "./ProductImage.module.css";
 
-// Product Image Component
 const ProductImage = ({ image }) => {
   return (
     <div className={styles.imageContainer}>
       <img
         src={image}
         alt="Product"
-        width="100%"
-        height="100%"
-        style={{ objectFit: "contain", aspectRatio: 1 }}
+        className={styles.productImg}
+        onError={(e) => {
+          e.target.onerror = null;
+          e.target.src =
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/330px-No-Image-Placeholder.svg.png";
+        }}
       />
     </div>
   );
